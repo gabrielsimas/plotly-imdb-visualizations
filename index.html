@@ -46,16 +46,18 @@
     </div>
 
     <script>
-      function showGraph(graph_filename) {
-          // Show the loading message
-          document.getElementById('loading').style.display = 'block';
-          // Set the iframe source to load the graph
-          document.getElementById('graph-container').src = graph_filename;
-      }
+      window.onload = function () {
+        window.showGraph = function(graph_filename) {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('graph-container').src = graph_filename;
+      };
 
-      function hideLoading() {
-          // Hide the loading message once the iframe content is loaded
-          document.getElementById('loading').style.display = 'none';
-      }
+    window.hideLoading = function() {
+        document.getElementById('loading').style.display = 'none';
+    };
+
+    document.getElementById('graph-container').onload = hideLoading;
+};
+
     </script>
 </body></html>
